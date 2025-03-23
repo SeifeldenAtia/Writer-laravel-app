@@ -7,177 +7,24 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Writer</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-    <link rel="icon" href="../public/logo.png" type="image/png">
-    <meta name="theme-color" content="#712cf9">
-
-
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-
-        .b-example-divider {
-            width: 100%;
-            height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        }
-
-        .b-example-vr {
-            flex-shrink: 0;
-            width: 1.5rem;
-            height: 100vh;
-        }
-
-        .bi {
-            vertical-align: -.125em;
-            fill: currentColor;
-        }
-
-        .nav-scroller {
-            position: relative;
-            z-index: 2;
-            height: 2.75rem;
-            overflow-y: hidden;
-        }
-
-        .nav-scroller .nav {
-            display: flex;
-            flex-wrap: nowrap;
-            padding-bottom: 1rem;
-            margin-top: -1px;
-            overflow-x: auto;
-            text-align: center;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .btn-bd-primary {
-            --bd-violet-bg: #712cf9;
-            --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
-            --bs-btn-font-weight: 600;
-            --bs-btn-color: var(--bs-white);
-            --bs-btn-bg: var(--bd-violet-bg);
-            --bs-btn-border-color: var(--bd-violet-bg);
-            --bs-btn-hover-color: var(--bs-white);
-            --bs-btn-hover-bg: #6528e0;
-            --bs-btn-hover-border-color: #6528e0;
-            --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-            --bs-btn-active-color: var(--bs-btn-hover-color);
-            --bs-btn-active-bg: #5a23c8;
-            --bs-btn-active-border-color: #5a23c8;
-        }
-
-        .bd-mode-toggle {
-            z-index: 1500;
-        }
-
-        .bd-mode-toggle .dropdown-menu .active .bi {
-            display: block !important;
-        }
-
-        #logo {
-            border-radius: 60%;
-        }
-    </style>
-
-
-    <!-- Custom styles for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="blog.css" rel="stylesheet">
+    <link rel="icon" href="{{ asset('logo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ asset('css/colorMode.css') }}">
 </head>
 
 <body>
 
+    @include('layout.colorMode')
 
-    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-        <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
-            aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
-            {{-- <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
-                <use href="#circle-half"></use>
-            </svg> --}}
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-moon-stars-fill my-1 theme-icon-active" viewBox="0 0 16 16">
-                <path
-                    d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278" />
-                <path
-                    d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.73 1.73 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.73 1.73 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.73 1.73 0 0 0 1.097-1.097zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z" />
-            </svg>
-            <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-            <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
-                    aria-pressed="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-brightness-high-fill me-2 opacity-50" viewBox="0 0 16 16">
-                        <path
-                            d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
-                    </svg>
-                    Light
-                    <svg class="bi ms-auto d-none" width="1em" height="1em">
-                        <use href="#check2"></use>
-                    </svg>
-                </button>
-            </li>
-            <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
-                    aria-pressed="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-moon-stars-fill me-2 opacity-50" viewBox="0 0 16 16">
-                        <path
-                            d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278" />
-                        <path
-                            d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.73 1.73 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.73 1.73 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.73 1.73 0 0 0 1.097-1.097zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z" />
-                    </svg>
-                    Dark
-                    <svg class="bi ms-auto d-none" width="1em" height="1em">
-                        <use href="#check2"></use>
-                    </svg>
-                </button>
-            </li>
-            <li>
-                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
-                    aria-pressed="true">
-                    <svg class="bi me-2 opacity-50" width="1em" height="1em">
-                        <use href="#circle-half"></use>
-                    </svg>
-                    Auto
-                    <svg class="bi ms-auto d-none" width="1em" height="1em">
-                        <use href="#check2"></use>
-                    </svg>
 
-                </button>
-            </li>
-        </ul>
-    </div>
 
     <div class="container">
         @include('layout.header')
-
         <div class="nav-scroller py-1 mb-3 border-bottom">
             <nav class="nav nav-underline justify-content-between">
-                <a class="nav-item nav-link link-body-emphasis" href="/">Home</a>
-                <a class="nav-item nav-link link-body-emphasis active" href="{{ Route('posts.index') }}">Posts</a>
+                <a class="nav-item nav-link link-body-emphasis active" href="/">Home</a>
+                <a class="nav-item nav-link link-body-emphasis " href="{{ Route('posts.index') }}">Posts</a>
                 <a class="nav-item nav-link link-body-emphasis" href="#">Tags</a>
-
                 <a class="nav-item nav-link link-body-emphasis" href="#">Design</a>
                 <a class="nav-item nav-link link-body-emphasis" href="#">AJAX</a>
             </nav>
@@ -212,12 +59,12 @@
                         </a>
                     </div>
                     <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250"
-                            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                            preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg"
+                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+                            focusable="false">
                             <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                fill="#eceeef" dy=".3em">Thumbnail</text>
+                            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                                dy=".3em">Thumbnail</text>
                         </svg>
                     </div>
                 </div>
@@ -239,12 +86,12 @@
                         </a>
                     </div>
                     <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250"
-                            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                            preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg"
+                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+                            focusable="false">
                             <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                fill="#eceeef" dy=".3em">Thumbnail</text>
+                            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                                dy=".3em">Thumbnail</text>
                         </svg>
                     </div>
                 </div>
