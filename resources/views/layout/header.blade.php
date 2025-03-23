@@ -25,3 +25,14 @@
         </div>
     </div>
 </header>
+
+<div class="nav-scroller py-1 mb-3 border-bottom">
+    <nav class="nav nav-underline justify-content-between">
+        <a class="nav-item nav-link link-body-emphasis {{ $class == 'home' ? 'active' : '' }}" href="/">Home</a>
+        <a class="nav-item nav-link link-body-emphasis {{ $class == 'posts' ? 'active' : '' }}"
+            href="{{ Route('posts.index') }}">Posts</a>
+        <a class="nav-item nav-link link-body-emphasis" href="#">Tags</a>
+        <a class="nav-item nav-link link-body-emphasis" href="#">Design</a>
+        <a class="nav-item nav-link link-body-emphasis" href="#">AJAX</a>
+    </nav>
+</div>
