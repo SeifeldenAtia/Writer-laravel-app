@@ -18,8 +18,12 @@
             Posts
         </h1>
         <br>
-
+        <a class="btn btn-info mb-4" href="{{ Route('posts.create') }}">
+            @include('inc.icons.plus')
+            Add a new Post
+        </a>
         <div class="row mb-2">
+
             @foreach ($posts as $post)
                 <div class="col-md-6">
                     <div
