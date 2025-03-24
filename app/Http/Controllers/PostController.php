@@ -46,7 +46,10 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $isLast = Post::max('id');
+        $isFirst = Post::min('id');
+        return view('posts.show' , ['post' => $post , 'isLast'=> $isLast  , 'isFirst' => $isFirst]);
     }
 
     /**
