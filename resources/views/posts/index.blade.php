@@ -60,6 +60,11 @@
                     </div>
                 </div>
             @endforeach
+
+            <div>
+                {{ $posts->links() }}
+            </div>
+
         </div>
     </div>
     @include('layout.footer')

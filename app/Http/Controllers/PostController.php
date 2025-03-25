@@ -14,8 +14,8 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::all();
-        return view('posts.index' , compact('posts'));
+        $posts = Post::paginate(10);
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -31,12 +31,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
-            'title' => $request->title,
-            'content' => $request->content
-        ];
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+        ]);
 
-        $post = new Post($data);
+        $post = new Post($validatedData);
         $post->save();
         return redirect()->route('posts.index')->with('success', 'Post Created Successfully');
     }
@@ -47,9 +47,24 @@ class PostController extends Controller
     public function show(string $id)
     {
         $post = Post::findOrFail($id);
-        $isLast = Post::max('id');
-        $isFirst = Post::min('id');
-        return view('posts.show' , ['post' => $post , 'isLast'=> $isLast  , 'isFirst' => $isFirst]);
+        // Next post Id
+        $nextPost = Post::where('id', '>', $post->id)->orderBy('id')->first();
+        // Previous post Id
+        $previousPost = Post::where('id', '<', $post->id)->orderBy('id', 'desc')->first();
+
+        // Get the latest 3 posts (excluding the current post)
+        $latestPosts = Post::where('id', '!=', $post->id)
+        ->orderBy('created_at', 'desc')
+        ->take(3)
+        ->get();
+
+        return view('posts.show' ,
+        [
+        'post' => $post,
+        'nextPost' => $nextPost,
+        'previousPost' => $previousPost,
+        'latestPosts' => $latestPosts,
+        ]);
     }
 
     /**

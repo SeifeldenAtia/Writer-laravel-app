@@ -16,7 +16,9 @@
         <h2 class="text-center text-info my-3">
             Create a new Post
         </h2>
-
+        <div class="col-12">
+            @include('inc.message')
+        </div>
         <form method="POST" action="{{ Route('posts.store') }}">
             @csrf
             <div class="mb-3">
