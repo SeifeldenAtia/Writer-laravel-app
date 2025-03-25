@@ -38,7 +38,7 @@ class PostController extends Controller
 
         $post = new Post($data);
         $post->save();
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')->with('success', 'Post Created Successfully');
     }
 
     /**
@@ -71,8 +71,9 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('posts.index')->with('success', 'Post Deleted Successfully');
     }
 }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>{{ $post->title }}</title>
     @include('layout.head')
 </head>
 
@@ -15,9 +15,21 @@
         @include('layout.header', ['class' => 'posts'])
         <div class="row g-5">
             <div class="col-md-8">
-                <h3 class="pb-4 mb-4 fst-italic border-bottom">
+                <h3 class="pb-4 mb-4 fst-italic border-bottom ">
                     From the Firehose
                 </h3>
+
+                <div class="mb-3 d-flex">
+                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Delete Post" class="btn btn-outline-danger rounded-pill px-3">
+                    </form>
+                    <a class="btn btn-outline-success rounded-pill px-3 ms-3 "
+                        href="{{ route('posts.edit', $post->id) }}">Edit Post</a>
+                </div>
+
+
 
                 <article class="blog-post">
                     <h2 class="display-5 link-body-emphasis mb-1">{{ $post->title }}</h2>

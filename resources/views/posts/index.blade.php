@@ -22,6 +22,10 @@
             @include('inc.icons.plus')
             Add a new Post
         </a>
+
+        <div class="col-12">
+            @include('inc.message')
+        </div>
         <div class="row mb-2">
 
             @foreach ($posts as $post)
@@ -40,6 +44,7 @@
                                     <use xlink:href="#chevron-right" />
                                 </svg>
                             </a>
+
                         </div>
                         <div class="col-auto d-none d-lg-block">
                             <svg class="bd-placeholder-img" width="200" height="250"
@@ -50,6 +55,8 @@
                                     fill="#eceeef" dy=".3em">Thumbnail</text>
                             </svg>
                         </div>
+
+
                     </div>
                 </div>
             @endforeach
